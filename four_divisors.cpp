@@ -23,7 +23,6 @@ public:
         }
         return ans;
     }
-
     int numOfDivisor(int n) {
         int temp{n}, count{};
         vector<int> v;
@@ -53,7 +52,6 @@ public:
         }
         return count;
     }
-
     int sumFourDivisors(vector<int>& nums) {
         int ans{};
         for (int i = 0; i < nums.size(); ++i) {
