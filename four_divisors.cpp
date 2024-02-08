@@ -1,4 +1,6 @@
-/* problem link --> https://leetcode.com/problems/four-divisors/description/ */
+/**
+ *    author: mohin    
+**/
 
 #include<bits/stdc++.h>
 
@@ -66,6 +68,8 @@ public:
 
 // Driver code
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
     int array_size{}, in{};
     vector<int> nums;
     cin >> array_size;
@@ -73,8 +77,8 @@ int main() {
         cin >> in;
         nums.push_back(in);
     }
-    Solution ans;
-    int sum_of_divisor = ans.sumFourDivisors(nums);
+    Solution obj;
+    int sum_of_divisor = obj.sumFourDivisors(nums);
     cout << sum_of_divisor << endl;
     return 0;
 }
