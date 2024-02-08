@@ -1,4 +1,6 @@
-/* problem link --> https://leetcode.com/problems/count-primes/description/ */
+/**
+ *    author: mohin    
+**/
 
 #include<bits/stdc++.h>
 
@@ -35,10 +37,12 @@ public:
 
 // Driver code
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
     int n{}, prime_count{};
     cin >> n;
-    Solution ans;
-    prime_count = ans.countPrimes(n);
+    Solution obj;
+    prime_count = obj.countPrimes(n);
     cout << prime_count << endl;
     return 0;
 }
