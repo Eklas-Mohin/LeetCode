@@ -9,10 +9,9 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     int sumOfDivisors(int n) {
         int sum = 1;
-
         for (int i = 2; i <= sqrt(n); ++i) {
             if (n % i == 0) {
                 int term_sum = 1, term_pow = 1;
@@ -24,17 +23,14 @@ public:
                 sum *= term_sum;
             }
         }
-
         if (n > 1) {
             sum *= (n + 1);
         }
-
         return sum;
     }
 
     int numOfDivisor(int n) {
         int divisor_count = 1;
-
         for (int i = 2; i <= sqrt(n); ++i) {
             if (n % i == 0) {
                 int count = 0;
@@ -45,23 +41,19 @@ public:
                 divisor_count *= (count + 1);
             }
         }
-
         if (n > 1) {
             divisor_count *= 2;
         }
-
         return divisor_count;
     }
 
     int sumFourDivisors(vector<int>& nums) {
         int total_sum = 0;
-
         for (int num : nums) {
             if (numOfDivisor(num) == 4) {
                 total_sum += sumOfDivisors(num);
             }
         }
-
         return total_sum;
     }
 };
@@ -69,19 +61,14 @@ public:
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-
     int array_size;
     cin >> array_size;
     vector<int> nums(array_size);
-
     for (int i = 0; i < array_size; ++i) {
         cin >> nums[i];
     }
-
     Solution obj;
     int result = obj.sumFourDivisors(nums);
-
     cout << result << endl;
-
     return 0;
 }
