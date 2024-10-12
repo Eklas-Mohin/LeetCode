@@ -13,6 +13,7 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> ans;
         unordered_map<int, int> pos;
+
         for (int i = 0; i < nums.size(); ++i) {
             int k = target - nums[i];
             if (pos.find(k) != pos.end()) { 
@@ -22,6 +23,7 @@ public:
             }
             pos[nums[i]] = i;
         }
+        
         return ans;
     }
 };
@@ -30,12 +32,13 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
 
-    int n{}, target{}, in{};
+    int n, x, target;
     vector<int> nums;
+
     cin >> n;
     for (int i = 0; i < n; ++i) {
-        cin >> in;
-        nums.push_back(in);
+        cin >> x;
+        nums.push_back(x);
     }
     cin >> target;
 
