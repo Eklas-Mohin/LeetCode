@@ -58,8 +58,7 @@ class Solution {
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
+    cin.tie(nullptr);cout.tie(nullptr);
     int array_size;
     cin >> array_size;
     vector<int> nums(array_size);
