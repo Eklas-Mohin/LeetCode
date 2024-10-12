@@ -28,7 +28,6 @@ class Solution {
         }
         return sum;
     }
-
     int numOfDivisor(int n) {
         int divisor_count = 1;
         for (int i = 2; i <= sqrt(n); ++i) {
@@ -46,7 +45,6 @@ class Solution {
         }
         return divisor_count;
     }
-
     int sumFourDivisors(vector<int>& nums) {
         int total_sum = 0;
         for (int num : nums) {
@@ -60,7 +58,7 @@ class Solution {
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(0);
+    cin.tie(nullptr);cout.tie(nullptr);
     int array_size;
     cin >> array_size;
     vector<int> nums(array_size);
