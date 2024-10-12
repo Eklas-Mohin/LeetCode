@@ -11,77 +11,77 @@ using namespace std;
 class Solution {
 public:
     int sumOfDivisors(int n) {
-        int count{1}, ans{1};
+        int sum = 1;
+
         for (int i = 2; i <= sqrt(n); ++i) {
             if (n % i == 0) {
-                count = 1;
+                int term_sum = 1, term_pow = 1;
                 while (n % i == 0) {
-                    count += 1;
+                    term_pow *= i;
+                    term_sum += term_pow;
                     n /= i;
                 }
-                ans *= (pow(i, count) - 1) / (i - 1);
+                sum *= term_sum;
             }
         }
-        if (n != 1) {
-            ans *= (pow(n, 2) - 1) / (n - 1);
+
+        if (n > 1) {
+            sum *= (n + 1);
         }
-        return ans;
+
+        return sum;
     }
 
     int numOfDivisor(int n) {
-        int temp{n}, count{};
-        vector<int> v;
-        while (temp % 2 == 0) {
-            count += 1;
-            temp /= 2;
-        }
-        if (count) {
-            v.push_back(count + 1);
-        }
-        for (int i = 3; i <= sqrt(temp); i += 2) {
-            if (temp % i == 0) {
-                count = 0;
-                while (temp % i == 0) {
-                    count += 1;
-                    temp /= i;
+        int divisor_count = 1;
+
+        for (int i = 2; i <= sqrt(n); ++i) {
+            if (n % i == 0) {
+                int count = 0;
+                while (n % i == 0) {
+                    count++;
+                    n /= i;
                 }
-                v.push_back(count + 1);
+                divisor_count *= (count + 1);
             }
         }
-        count = 1;
-        if (temp != 1) {
-            v.push_back(2);
+
+        if (n > 1) {
+            divisor_count *= 2;
         }
-        for (int i = 0; i < v.size(); ++i) {
-            count *= v[i];
-        }
-        return count;
+
+        return divisor_count;
     }
 
     int sumFourDivisors(vector<int>& nums) {
-        int ans{};
-        for (int i = 0; i < nums.size(); ++i) {
-            int d = numOfDivisor(nums[i]);
-            if (d == 4) {
-                ans += sumOfDivisors(nums[i]);
+        int total_sum = 0;
+
+        for (int num : nums) {
+            if (numOfDivisor(num) == 4) {
+                total_sum += sumOfDivisors(num);
             }
         }
-        return ans;
+
+        return total_sum;
     }
 };
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int array_size{}, in{};
-    vector<int> nums;
+
+    int array_size;
     cin >> array_size;
+    vector<int> nums(array_size);
+
     for (int i = 0; i < array_size; ++i) {
-        cin >> in;
-        nums.push_back(in);
+        cin >> nums[i];
     }
+
     Solution obj;
-    int sum_of_divisor = obj.sumFourDivisors(nums);
-    cout << sum_of_divisor << endl;
+    int result = obj.sumFourDivisors(nums);
+
+    cout << result << endl;
+
     return 0;
 }
