@@ -1,8 +1,10 @@
-/**
- *    author: mohin    
-**/
+/** **************************
+ *   author:  mohin          *
+ *   problem: LeetCode 1     *
+ *   verdict: Accepted       *
+ *****************************/
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,22 +12,20 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> ans;
-        map<int, int> pos;
-        pos[nums[0]] = 1;
-        for (int i = 1; i < nums.size(); ++i) {
+        unordered_map<int, int> pos;
+        for (int i = 0; i < nums.size(); ++i) {
             int k = target - nums[i];
-            if (pos[k] != 0) {
-                ans.push_back(pos[k] - 1);
-                ans.push_back(i);
-                break;
+            if (pos.find(k) != pos.end()) { 
+                ans.push_back(pos[k]);       
+                ans.push_back(i);             
+                return ans;                   
             }
-            pos[nums[i]] = i + 1;
+            pos[nums[i]] = i;
         }
         return ans;
-     }
+    }
 };
 
-// Driver code
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
@@ -41,7 +41,12 @@ int main() {
 
     Solution obj;
     vector<int> ans = obj.twoSum(nums, target);
-    printf("[%d,%d]\n", ans[0], ans[1]);
+    
+    if (ans.size() == 2) {
+        printf("[%d,%d]\n", ans[0], ans[1]);
+    } else {
+        printf("No two sum solution found\n");
+    }
 
     return 0;
 }
